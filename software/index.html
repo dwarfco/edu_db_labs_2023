@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | Проєкт БД-2023 №2</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/edu_db_labs_2023/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/edu_db_labs_2023/assets/css/0.styles.ddbc24d7.css" as="style"><link rel="preload" href="/edu_db_labs_2023/assets/js/app.d3b58541.js" as="script"><link rel="preload" href="/edu_db_labs_2023/assets/js/2.4dce6878.js" as="script"><link rel="preload" href="/edu_db_labs_2023/assets/js/23.214a2566.js" as="script"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/10.6db29c85.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/11.ae9ae219.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/12.b1468cfc.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/13.81c6422e.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/14.44983906.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/15.65030050.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/16.5fa7a41f.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/17.71bdce30.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/18.ee7d0d64.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/19.0e8e5bc8.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/20.e0cb1bef.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/21.a11ac45e.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/22.771c0c2a.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/24.fb949811.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/25.11c12197.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/26.6dec4e79.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/3.bf9dfa5a.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/4.a897aabd.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/5.326ba5e0.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/6.20957c03.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/7.dc65073d.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/8.4e6744f6.js"><link rel="prefetch" href="/edu_db_labs_2023/assets/js/9.5f82a72a.js">
+    <link rel="stylesheet" href="/edu_db_labs_2023/assets/css/0.styles.ddbc24d7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/edu_db_labs_2023/" class="home-link router-link-active"><!----> <span class="site-name">Проєкт БД-2023 №2</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/edu_db_labs_2023/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/dwarfco/edu_db_labs_2023" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/edu_db_labs_2023/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/dwarfco/edu_db_labs_2023" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/edu_db_labs_2023/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/edu_db_labs_2023/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/edu_db_labs_2023/use%20cases/" class="sidebar-link">Розроблення вимог до функціональности системи</a></li><li><a href="/edu_db_labs_2023/design/" class="sidebar-link">Проектування інформаційного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/design/#модель-бізнес-об-єктів" class="sidebar-link">модель бізнес-об'єктів</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/design/#er-модель" class="sidebar-link">ER-модель</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/design/#реляціина-схема" class="sidebar-link">реляційна схема</a></li></ul></li><li><a href="/edu_db_labs_2023/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a></li><li><a href="/edu_db_labs_2023/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#взаємодія-з-restful-сервером-запитами-http" class="sidebar-link">Взаємодія з RESTful сервером запитами HTTP</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#вхідні-дані-згенеровані-mysql-скриптом" class="sidebar-link">Вхідні дані згенеровані mySQL скриптом</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#відсилання-запитів-http-на-insert-до-таблиць" class="sidebar-link">Відсилання запитів HTTP на INSERT до таблиць</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#результат-відсилання-запитів-http-до-insert-до-таблиць" class="sidebar-link">Результат відсилання запитів HTTP до INSERT до таблиць</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#відсилання-запитів-http-на-delete-до-таблиць" class="sidebar-link">Відсилання запитів HTTP на DELETE до таблиць</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_2023/test/#результат-відсилання-запитів-http-до-delete-до-таблиць" class="sidebar-link">Результат відсилання запитів HTTP до DELETE до таблиць</a></li></ul></li></ul></li><li><a href="/edu_db_labs_2023/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <p>В рамках проекту розробляється:</p> <ul><li>SQL-скрипт для створення на початкового наповнення бази даних</li></ul> <div class="language-mysql extra-class"><pre class="language-text"><code>-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`role` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `role_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `role_id`),
+  INDEX `fk_user_role1_idx` (`role_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_role1`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `mydb`.`role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`action`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`action` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`action` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`access`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`access` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`access` (
+  `role_id` INT NOT NULL,
+  `action_id` INT NOT NULL,
+  PRIMARY KEY (`role_id`, `action_id`),
+  INDEX `fk_access_role1_idx` (`role_id` ASC) VISIBLE,
+  INDEX `fk_access_action1_idx` (`action_id` ASC) VISIBLE,
+  CONSTRAINT `fk_access_role1`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `mydb`.`role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_access_action1`
+    FOREIGN KEY (`action_id`)
+    REFERENCES `mydb`.`action` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`datafile`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`datafile` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`datafile` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `upload_date` DATE NOT NULL,
+  `file_type` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`file_collection`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`file_collection` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`file_collection` (
+  `datafile_id` INT NOT NULL,
+  `access_role_id` INT NOT NULL,
+  `access_action_id` INT NOT NULL,
+  PRIMARY KEY (`datafile_id`, `access_role_id`, `access_action_id`),
+  INDEX `fk_file_collection_datafile1_idx` (`datafile_id` ASC) VISIBLE,
+  INDEX `fk_file_collection_access1_idx` (`access_role_id` ASC, `access_action_id` ASC) VISIBLE,
+  CONSTRAINT `fk_file_collection_datafile1`
+    FOREIGN KEY (`datafile_id`)
+    REFERENCES `mydb`.`datafile` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_file_collection_access1`
+    FOREIGN KEY (`access_role_id` , `access_action_id`)
+    REFERENCES `mydb`.`access` (`role_id` , `action_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'UserAuth');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'UserCreate');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'DataDownload');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'DataSearch');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'DataUpload');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'DataFilter');
+INSERT INTO `mydb`.`action` (`id`, `name`) VALUES (DEFAULT, 'DataDelete');
+COMMIT;
+
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`datafile` (`id`, `name`, `description`, `upload_date`, `file_type`) VALUES (DEFAULT, '/mnt/2022/ukraine_tax_stat', 'Stat about ukrainian taxpayers', '2022-10-02', 'csv');
+INSERT INTO `mydb`.`datafile` (`id`, `name`, `description`, `upload_date`, `file_type`) VALUES (DEFAULT, '/mnt/2022/poland_tax_stat', 'Stat about polish taxpayers', '2022-11-02', 'json');
+INSERT INTO `mydb`.`datafile` (`id`, `name`, `description`, `upload_date`, `file_type`) VALUES (DEFAULT, '/mnt/2022/ukr_crime_stat', 'Stat about crimerate in UKR', '2022-9-02', 'csv');
+INSERT INTO `mydb`.`datafile` (`id`, `name`, `description`, `upload_date`, `file_type`) VALUES (DEFAULT, '/mnt/2022/pol_crime_stat', 'Stat about crimerate in POL', '2022-8-02', 'json');
+COMMIT;
+
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`role` (`id`, `name`) VALUES (1, 'Guest');
+INSERT INTO `mydb`.`role` (`id`, `name`) VALUES (2, 'Administrator');
+INSERT INTO `mydb`.`role` (`id`, `name`) VALUES (3, 'Authorized user');
+COMMIT;
+
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`user` (`id`, `username`, `email`, `password`, `role_id`) VALUES (DEFAULT, 'tvytvytskyi', 'tvytvytskyi@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 3);
+INSERT INTO `mydb`.`user` (`id`, `username`, `email`, `password`, `role_id`) VALUES (DEFAULT, 'odyshkantiuk', 'odyshkantiuk@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 3);
+INSERT INTO `mydb`.`user` (`id`, `username`, `email`, `password`, `role_id`) VALUES (DEFAULT, 'diliyov', 'diliyov@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 3);
+INSERT INTO `mydb`.`user` (`id`, `username`, `email`, `password`, `role_id`) VALUES (DEFAULT, 'omaksymenko', 'omaksymenko@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 3);
+COMMIT;
+</code></pre></div><ul><li>RESTfull сервіс для управління даними</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
+
+const app = express();
+const port = 3000;
+
+// Create a MySQL connection
+const connection = mysql.createConnection({
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password: 'password',
+  database: 'mydb',
+});
+
+// Connect to the database
+connection.connect((err) =&gt; {
+  if (err) throw err;
+  console.log('Connected to the database.');
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+
+// Define routes
+app.get('/actions', (req, res) =&gt; {
+  // Fetch all users from the database
+  connection.query('SELECT * FROM action', (err, results) =&gt; {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.get('/datafiles', (req, res) =&gt; {
+  // Fetch all users from the database
+  connection.query('SELECT * FROM datafile', (err, results) =&gt; {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.get('/users', (req, res) =&gt; {
+  // Fetch all users from the database
+  connection.query('SELECT * FROM user', (err, results) =&gt; {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.get('/roles', (req, res) =&gt; {
+  // Fetch all users from the database
+  connection.query('SELECT * FROM role', (err, results) =&gt; {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// req.query contains all params supplied in POST request
+app.post('/users', (req, res) =&gt; {
+  console.log(&quot;Debug print:&quot;, req.query);
+  const { username, email, passwd, role_id } = req.query;
+  
+  // Insert a new user into the database
+  connection.query(
+    'INSERT INTO user (id, username, email, password, role_id) VALUES (DEFAULT, ?, ?, ?, ?)',
+    [username, email, passwd, role_id],
+    (err, results) =&gt; {
+      if (err) throw err;
+      res.json({ message: 'User created successfully!' });
+    }
+  );
+});
+
+app.post('/datafiles', (req, res) =&gt; {
+  console.log(&quot;Debug print:&quot;, req.query);
+  const { name, description, upload_date, file_type } = req.query;
+  
+  // Insert a new user into the database
+  connection.query(
+    'INSERT INTO datafile (id, name, description, upload_date, file_type) VALUES (DEFAULT, ?, ?, ?, ?)',
+    [name, description, upload_date, file_type],
+    (err, results) =&gt; {
+      if (err) throw err;
+      res.json({ message: 'Datafile created successfully!' });
+    }
+  );
+});
+
+app.delete('/datafiles', (req, res) =&gt; {
+  console.log(&quot;Debug print:&quot;, req.query);
+  const { name } = req.query;
+  
+  // Insert a new user into the database
+  connection.query(
+    'DELETE FROM datafile WHERE name=?;',
+    [name],
+    (err, results) =&gt; {
+      if (err) throw err;
+      res.json({ message: 'Datafile deleted successfully!' });
+    }
+  );
+});
+
+app.delete('/users', (req, res) =&gt; {
+  console.log(&quot;Debug print:&quot;, req.query);
+  const { username } = req.query;
+  
+  // Insert a new user into the database
+  connection.query(
+    'DELETE FROM user WHERE username=?;',
+    [username],
+    (err, results) =&gt; {
+      if (err) throw err;
+      res.json({ message: 'User deleted successfully!' });
+    }
+  );
+});
+
+
+// Start the server
+app.listen(port, () =&gt; {
+  console.log(`Server running on port ${port}`);
+});
+
+
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">5/28/2023, 2:39:47 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/edu_db_labs_2023/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/edu_db_labs_2023/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/edu_db_labs_2023/assets/js/app.d3b58541.js" defer></script><script src="/edu_db_labs_2023/assets/js/2.4dce6878.js" defer></script><script src="/edu_db_labs_2023/assets/js/23.214a2566.js" defer></script>
+  </body>
+</html>
